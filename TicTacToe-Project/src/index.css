@@ -8,15 +8,17 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    padding-top: 12.5%;
+    margin-top: 5%;
 }
 
 .app h1 {
     border: 2px solid black;
-    background-color: rgb(85, 83, 83);
-    padding: 2px 72px;
-    color: #3B8183;
-    text-shadow: 0.5px 0.5px red;
+    background-color: rgb(168, 167, 163);
+    padding: 2px 136px;
+    color: #38787a;
+    text-shadow: 4px 4px rgb(180, 184, 80);
+    font-family: 'Permanent Marker';
+    font-size: 32px;
 }
 
 .game {
@@ -26,22 +28,21 @@
     align-items: center;
     text-align: center;
     border: 2px solid black;
-    width: 300px;
-    height: 400px;
+    width: 450px;
+    height: 600px;
     background-color: rgb(52, 58, 74);
-
 }
 
 .status {
     flex: 1;
-    color: rgb(241, 235, 195);
-    font-weight: bold;
-    font-size: 18px;
+    color: rgb(196, 189, 149);
+    font-size: 20px;
     display: flex;
     width: 100%;
     background-color: rgb(85, 83, 83);
     align-items: center;
     justify-content: center;
+    font-family: 'Permanent Marker';
 }
 
 .board-row {
@@ -49,6 +50,7 @@
     width: 100%;
     flex: 5;
     color: #cf5353;
+
 }
 
 .reset {
@@ -56,9 +58,10 @@
     height: 75px;
     flex: 2;
     background-color: #f1ebc3;
-    color: black;
-    font-size: 15px;
+    color: rgb(55, 48, 92);
+    font-size: 28px;
     font-weight: bold;
+    font-family: 'Chalkduster', sans-serif, Arial, Helvetica
 }
 
 .square {
@@ -66,9 +69,14 @@
     background-color: rgb(52, 58, 74);
     border-radius: 0px;
     box-shadow: 1px 3px black;
-    color: #cf5353
+    color: #cf5353;
+    font-weight: bold;
+    font-size: 32px;
 }
 
+.change {
+    background-color: #352813;
+}
 
 
 @property --a {
@@ -145,7 +153,7 @@ html {
         --a: 135deg;
         --p: 20%;
         --c2: #3B8183;
-        --c1: #FAD089;
+        --c1: #fad089;
         background-position: var(--s) 0, 0 var(--s);
     }
 }
