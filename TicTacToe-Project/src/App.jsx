@@ -4,26 +4,24 @@ import calculateWinner from "./Calculater";
 
 function Board() {
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [isnext, setIsNext] = useState(true);
+  const [isNext, setIsNext] = useState(true);
   const [colorStates, setColorStates] = useState(Array(9).fill(false));
 
   const handleClick = (index) => {
     if (squares[index] || calculateWinner(squares)) return;
 
     const nextSquares = squares.slice();
-    nextSquares[index] = isnext ? "X" : "O";
+    nextSquares[index] = isNext ? "X" : "O";
     setSquares(nextSquares);
-    setIsNext(!isnext);
+    setIsNext(!isNext);
 
     const nextColors = colorStates.slice();
-    nextColors[index] = true; // Bu kareye renk değişikliği uygula
+    nextColors[index] = true;
     setColorStates(nextColors);
   };
 
   const winner = calculateWinner(squares);
-  const status = winner
-    ? `Winner: ${winner}`
-    : `Next player: ${isnext ? "X" : "O"}`;
+  const status = winner ? `Winner: ${winner}` : `Next player: ${isNext ? "X" : "O"}`;
 
   return (
     <div className="game">
@@ -34,7 +32,7 @@ function Board() {
             key={index}
             value={value}
             onClick={() => handleClick(index)}
-            className={colorStates[index] ? "change" : ""}
+            className={colorStates[index] ? (value === "X" ? "x" : "o") : ""}
           />
         ))}
       </div>
@@ -44,7 +42,7 @@ function Board() {
             key={index + 3}
             value={value}
             onClick={() => handleClick(index + 3)}
-            className={colorStates[index + 3] ? "change" : ""}
+            className={colorStates[index + 3] ? (value === "X" ? "x" : "o") : ""}
           />
         ))}
       </div>
@@ -54,7 +52,7 @@ function Board() {
             key={index + 6}
             value={value}
             onClick={() => handleClick(index + 6)}
-            className={colorStates[index + 6] ? "change" : ""}
+            className={colorStates[index + 6] ? (value === "X" ? "x" : "o") : ""}
           />
         ))}
       </div>
@@ -63,7 +61,7 @@ function Board() {
         onClick={() => {
           setSquares(Array(9).fill(null));
           setIsNext(true);
-          setColorStates(Array(9).fill(false)); // Renk durumlarını sıfırla
+          setColorStates(Array(9).fill(false));
         }}
       >
         Reset

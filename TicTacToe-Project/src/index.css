@@ -1,6 +1,21 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: 'Permanent Marker', cursive;
+    height: 100%;
+    background: linear-gradient(90deg, #000000 -5%, #9b1c1c 20%, #9b59b6 50%, #2980b9 80%, #000000 105%);
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .app {
@@ -8,152 +23,109 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-top: 5%;
+    max-width: 500px;
+    width: 100%;
+    background-color: #2c2c2c;
+    padding: 40px 30px;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    font-family: 'Permanent Marker', cursive;
 }
 
-.app h1 {
-    border: 2px solid black;
-    background-color: rgb(168, 167, 163);
-    padding: 2px 136px;
-    color: #38787a;
-    text-shadow: 4px 4px rgb(180, 184, 80);
-    font-family: 'Permanent Marker';
-    font-size: 32px;
+.title {
+    font-size: 48px;
+    color: #e1e1e1;
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
 }
 
 .game {
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    text-align: center;
-    border: 2px solid black;
-    width: 450px;
-    height: 600px;
-    background-color: rgb(52, 58, 74);
+    justify-content: center;
+    width: 100%;
+    background-color: #333333;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .status {
-    flex: 1;
-    color: rgb(196, 189, 149);
+    color: #b0b0b0;
     font-size: 20px;
-    display: flex;
-    width: 100%;
-    background-color: rgb(85, 83, 83);
-    align-items: center;
-    justify-content: center;
-    font-family: 'Permanent Marker';
+    margin-bottom: 20px;
+    font-weight: 500;
 }
 
 .board-row {
     display: flex;
-    width: 100%;
-    flex: 5;
-    color: #cf5353;
-
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
 .reset {
     width: 100%;
-    height: 75px;
-    flex: 2;
-    background-color: #f1ebc3;
-    color: rgb(55, 48, 92);
-    font-size: 28px;
-    font-weight: bold;
-    font-family: 'Chalkduster', sans-serif, Arial, Helvetica
+    height: 50px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 20px;
+}
+
+.reset:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
 }
 
 .square {
-    flex: 1;
-    background-color: rgb(52, 58, 74);
-    border-radius: 0px;
-    box-shadow: 1px 3px black;
-    color: #cf5353;
+    width: 100px;
+    height: 100px;
+    background-color: #2c2c2c;
+    border: 2px solid #444444;
+    border-radius: 12px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 36px;
     font-weight: bold;
-    font-size: 32px;
+    color: #e1e1e1;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
 }
 
-.change {
-    background-color: #352813;
+.square:hover {
+    background-color: #444444;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-
-@property --a {
-    syntax: '<angle>';
-    inherits: true;
-    initial-value: 0deg;
+.square.o {
+    color: #2980b9;
+    text-shadow:
+        0 0 6px #2980b9,
+        0 0 12px #3498db;
+    transition: text-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-@property --p {
-    syntax: '<percentage>';
-    inherits: true;
-    initial-value: 0%;
+.square.x {
+    color: #e74c3c;
+    text-shadow:
+        0 0 6px #e74c3c,
+        0 0 12px #ff6f61;
+    transition: text-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
 }
 
-@property --c1 {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #000;
-}
+.square.o:hover,
+.square.x:hover {
+    text-shadow:
+        0 0 8px currentColor,
+        0 0 16px currentColor;
 
-@property --c2 {
-    syntax: '<color>';
-    inherits: true;
-    initial-value: #000;
-}
-
-html {
-    --s: 80px;
-    --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a);
-    background:
-        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
-        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
-        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
-        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
-        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
-        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
-        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)),
-        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)) var(--c2);
-    background-size: calc(2*var(--s)) calc(2*var(--s));
-    animation: m 2s infinite alternate linear;
-}
-
-@keyframes m {
-
-    0%,
-    15% {
-        --a: 135deg;
-        --p: 20%;
-        --c1: #3B8183;
-        --c2: #FAD089;
-        background-position: 0 0, var(--s) var(--s);
-    }
-
-    45%,
-    50% {
-        --a: 90deg;
-        --p: 25%;
-        --c1: #3B8183;
-        --c2: #FAD089;
-        background-position: 0 0, var(--s) var(--s);
-    }
-
-    50.01%,
-    55% {
-        --a: 90deg;
-        --p: 25%;
-        --c2: #3B8183;
-        --c1: #FAD089;
-        background-position: var(--s) 0, 0 var(--s);
-    }
-
-    85%,
-    100% {
-        --a: 135deg;
-        --p: 20%;
-        --c2: #3B8183;
-        --c1: #fad089;
-        background-position: var(--s) 0, 0 var(--s);
-    }
 }
