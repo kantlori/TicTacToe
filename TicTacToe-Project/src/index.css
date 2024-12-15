@@ -109,16 +109,16 @@ body {
 .square.o {
     color: #2980b9;
     text-shadow:
-        0 0 6px #2980b9,
-        0 0 12px #3498db;
+        0 0 4px #2980b9,
+        0 0 8px #3498db;
     transition: text-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
 .square.x {
     color: #e74c3c;
     text-shadow:
-        0 0 6px #e74c3c,
-        0 0 12px #ff6f61;
+        0 0 4px #e74c3c,
+        0 0 8px #ff6f61;
     transition: text-shadow 0.4s ease-in-out, transform 0.4s ease-in-out;
 }
 
