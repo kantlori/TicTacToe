@@ -1,0 +1,151 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding-top: 12.5%;
+}
+
+.app h1 {
+    border: 2px solid black;
+    background-color: rgb(85, 83, 83);
+    padding: 2px 72px;
+    color: #3B8183;
+    text-shadow: 0.5px 0.5px red;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 2px solid black;
+    width: 300px;
+    height: 400px;
+    background-color: rgb(52, 58, 74);
+
+}
+
+.status {
+    flex: 1;
+    color: rgb(241, 235, 195);
+    font-weight: bold;
+    font-size: 18px;
+    display: flex;
+    width: 100%;
+    background-color: rgb(85, 83, 83);
+    align-items: center;
+    justify-content: center;
+}
+
+.board-row {
+    display: flex;
+    width: 100%;
+    flex: 5;
+    color: #cf5353;
+}
+
+.reset {
+    width: 100%;
+    height: 75px;
+    flex: 2;
+    background-color: #f1ebc3;
+    color: black;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.square {
+    flex: 1;
+    background-color: rgb(52, 58, 74);
+    border-radius: 0px;
+    box-shadow: 1px 3px black;
+    color: #cf5353
+}
+
+
+
+@property --a {
+    syntax: '<angle>';
+    inherits: true;
+    initial-value: 0deg;
+}
+
+@property --p {
+    syntax: '<percentage>';
+    inherits: true;
+    initial-value: 0%;
+}
+
+@property --c1 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #000;
+}
+
+@property --c2 {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #000;
+}
+
+html {
+    --s: 80px;
+    --_g: #0000, var(--c1) 2deg calc(var(--a) - 2deg), #0000 var(--a);
+    background:
+        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(-45deg - var(--a)/2) at top var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(45deg - var(--a)/2) at top var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(-135deg - var(--a)/2) at bottom var(--p) left var(--p), var(--_g)),
+        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)),
+        conic-gradient(from calc(135deg - var(--a)/2) at bottom var(--p) right var(--p), var(--_g)) var(--c2);
+    background-size: calc(2*var(--s)) calc(2*var(--s));
+    animation: m 2s infinite alternate linear;
+}
+
+@keyframes m {
+
+    0%,
+    15% {
+        --a: 135deg;
+        --p: 20%;
+        --c1: #3B8183;
+        --c2: #FAD089;
+        background-position: 0 0, var(--s) var(--s);
+    }
+
+    45%,
+    50% {
+        --a: 90deg;
+        --p: 25%;
+        --c1: #3B8183;
+        --c2: #FAD089;
+        background-position: 0 0, var(--s) var(--s);
+    }
+
+    50.01%,
+    55% {
+        --a: 90deg;
+        --p: 25%;
+        --c2: #3B8183;
+        --c1: #FAD089;
+        background-position: var(--s) 0, 0 var(--s);
+    }
+
+    85%,
+    100% {
+        --a: 135deg;
+        --p: 20%;
+        --c2: #3B8183;
+        --c1: #FAD089;
+        background-position: var(--s) 0, 0 var(--s);
+    }
+}
